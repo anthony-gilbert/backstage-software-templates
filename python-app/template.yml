@@ -59,7 +59,7 @@ spec:
       input:
         url: ./template
         values:
-          name: ${{ parameters.name }}
+          name: ${{ parameters.component_id }}
           owner: ${{ parameters.owner }}
 
     - id: fetch-docs
@@ -73,7 +73,7 @@ spec:
       name: Publish
       action: publish:github
       input:
-        description: This is ${{ parameters.name }}
+        description: This is ${{ parameters.component_id }}
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: 'main'
 
