@@ -1,0 +1,13 @@
+site_name: '${{values.name}}'
+site_description: 'Main documentation for ${{values.name}}'
+repo_url: https://github.com/anthony-gilbert/${{values.name}}
+site_author: 'Anthony Gilbert'
+edit_uri: edit/master/docs  # use the correct branch name
+
+plugins:
+  - techdocs-core
+  # remove redirects for now (or keep it only if you install the plugin)
+
+nav:
+  - Overview:
+      - Getting started: index.md

@@ -1,0 +1,24 @@
+# sample-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${{values.name}}
+  labels:
+    app: ${{values.name}}
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${{values.name}}
+  template:
+    metadata:
+      labels:
+        app: ${{values.name}}
+    spec:
+      containers:
+      - name: ${{values.name}}
+        image: ${{values.name}}:local
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
