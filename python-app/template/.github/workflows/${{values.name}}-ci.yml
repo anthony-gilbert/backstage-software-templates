@@ -43,7 +43,7 @@ jobs:
         run: |
           echo ${{needs.ci.outputs.commit_id}}
           pip install yq
-          yq -Yi '.image.tag = "${{'${{needs.ci.outputs.commit_id}}}}"' helm-charts/${{values.name}}/values-${{values.environment}}.yaml
+          yq -Yi '.image.tag = "${{'${{needs.ci.outputs.commit_id}}'}}"' helm-charts/${{values.name}}/values-${{values.environment}}.yaml
 
 
       - name: Commit changes
