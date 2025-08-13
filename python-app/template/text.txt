@@ -1,4 +1,5 @@
 This is a test file:
 
-The app's name is ${{values.app_name}}
-The's app's env is ${{values.app_env}}
+The app's name is ${{values.name}}
+The's app's env is ${{values.env}}
+The owner of this app is ${{values.owner}}

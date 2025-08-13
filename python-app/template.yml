@@ -60,6 +60,7 @@ spec:
         url: ./template
         values:
           name: ${{ parameters.component_id }}
+          env: ${{ parameters.environment }}
           owner: ${{ parameters.owner }}
 
     - id: fetch-docs
