@@ -1,5 +1,5 @@
 
-# ${{app.name}}
+# ${{values.name}}
 
 A lightweight Python application built to demonstrate core features, including setup, execution, and configuration.
 
@@ -44,5 +44,5 @@ docker run --rm -it ${{values.name}}
 
 You can access the app by accessing this url:
 ```sh
-${{values.app}}-${{values.env}}.local/app/v1/info
+${{values.name}}-${{values.env}}.local/app/v1/info
 ```
