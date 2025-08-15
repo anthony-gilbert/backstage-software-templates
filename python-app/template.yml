@@ -68,7 +68,7 @@ spec:
       action: fetch:plain
       input:
         targetPath: ./community
-        url: https://github.com/backstage/community/tree/main/backstage-community-sessions
+        url: https://github.com/backstage/community/tree/master/backstage-community-sessions
 
     - id: publish
       name: Publish
@@ -76,7 +76,7 @@ spec:
       input:
         description: This is ${{ parameters.component_id }}
         repoUrl: ${{ parameters.repoUrl }}
-        defaultBranch: 'main'
+        defaultBranch: 'master'
 
     - id: register
       name: Register
