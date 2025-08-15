@@ -41,7 +41,7 @@ jobs:
       - name: Modify values.yaml
         shell: bash
         run: |
-          echo ${{'${{needs.ci.outputs.commit_id}}'}}'
+          echo ${{'${{needs.ci.outputs.commit_id}}'}}
           pip install yq
           yq -Yi '.image.tag = "${{'${{needs.ci.outputs.commit_id}}'}}"' helm-charts/${{values.name}}/values.yaml
 
