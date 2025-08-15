@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: anthonygilbertt/${{values.name}}
   pullPolicy: IfNotPresent
-  tag: ${{values.name}}-${{values.env}}-latest
+  tag: ${{values.name}}-${{values.env}}-${{'${{commit_id}}'}}
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
