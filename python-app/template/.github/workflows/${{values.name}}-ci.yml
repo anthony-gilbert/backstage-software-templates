@@ -74,7 +74,7 @@ jobs:
             --values helm-charts/${{values.name}}/values-${{values.env}}.yaml \
             --revision master \
             --sync-policy manual \
-            --sync-operation createNamespace=true
+            --sync-option createNamespace=true
           echo "ArgoCD app created successfully."
         
       - name: ArgoCD sync
