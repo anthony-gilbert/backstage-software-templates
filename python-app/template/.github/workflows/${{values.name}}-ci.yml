@@ -46,7 +46,6 @@ jobs:
           pip install yq
           yq -Yi '.image.tag = "${{'${{needs.ci.outputs.commit_id}}'}}"' helm-charts/${{values.name}}/values-${{values.env}}.yaml
 
-
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
@@ -85,6 +84,3 @@ jobs:
           argocd app sync ${{values.name}}
           argocd app wait ${{values.name}} --timeout 300
           echo "ArgoCD login completed successfully."
-        # env:
-        #   ARGOCD_SERVER: ${{ secrets.ARGOCD_SERVER }}
-        #   ARGOCD_TOKEN: ${{ secrets.ARGOCD_TOKEN }}
