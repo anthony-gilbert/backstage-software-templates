@@ -60,12 +60,6 @@ jobs:
           sudo mv ./argocd /usr/local/bin/argocd
           echo "ArgoCD CLI installed successfully."
 
-      - name: Create namespace
-        shell: bash
-        run: |
-          kubectl create namespace ${{values.env}} --dry-run=client -o yaml | kubectl apply -f -
-          echo "Namespace ${{values.env}} created or already exists."
-
       - name: ArgoCD login and add repo
         shell: bash
         run: |
@@ -80,6 +74,8 @@ jobs:
             --values values-${{values.env}}.yaml \
             --revision master \
             --sync-policy manual
+            --sync-option CreateNamespace=true \
+            --upsert \
           echo "ArgoCD app created successfully."
         
       - name: ArgoCD sync
