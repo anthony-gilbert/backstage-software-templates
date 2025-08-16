@@ -12,8 +12,6 @@ app = Flask(__name__)
 # which tells the application which URL should call 
 # the associated function.
 @app.route('/app/v1/info')
-# ‘/’ URL is bound with hello_world() function.
-
 def details():
     return jsonify({
         'time': datetime.datetime.now().strftime("%I:%M:%S%p on %B %d, %Y"),
@@ -26,7 +24,6 @@ def details():
     })
 
 @app.route('/app/v1/health')
-
 def status():
     return jsonify({
         'status': 'up',
