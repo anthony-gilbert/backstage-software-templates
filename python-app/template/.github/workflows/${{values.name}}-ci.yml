@@ -71,7 +71,7 @@ jobs:
             --path helm-charts/${{values.name}} \
             --dest-namespace ${{values.env}} \
             --dest-server https://kubernetes.default.svc \
-            --values helm-charts/${{values.name}}/values-${{values.env}}.yaml \
+            --values values-${{values.env}}.yaml \
             --revision master \
             --sync-policy manual \
             --sync-option createNamespace=true
