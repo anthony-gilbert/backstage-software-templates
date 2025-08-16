@@ -63,8 +63,16 @@ jobs:
         shell: bash
         run: |
           argocd login argo-argocd-server.argocd --insecure --username admin --password ${{'${{secrets.ARGOCD_PASSWORD}}'}}
+
+      - name: Add ArgoCD repository
+        shell: bash
+        run: |
           argocd repo list | grep -q 'https://github.com/anthony-gilbert-org/${{values.name}}.git' || argocd repo add 'https://github.com/anthony-gilbert-org/${{values.name}}.git'
           echo "ArgoCD login and repo addition completed successfully."
+
+      - name: Create ArgoCD application
+        shell: bash
+        run: |
           argocd app create ${{values.name}} \
             --repo 'https://github.com/anthony-gilbert-org/${{values.name}}.git' \
             --path helm-charts/${{values.name}} \
@@ -72,15 +80,7 @@ jobs:
             --dest-server https://kubernetes.default.svc \
             --values values-${{values.env}}.yaml \
             --revision master \
-            --sync-policy manual \
+            --sync-policy automated \
             --sync-option CreateNamespace=true \
             --upsert \
           echo "ArgoCD app created successfully."
-        
-      - name: ArgoCD sync
-        shell: bash
-        run: | 
-          argocd login argo-argocd-server.argocd --insecure --username admin --password ${{'${{secrets.ARGOCD_PASSWORD}}'}}
-          argocd app sync ${{values.name}}
-          argocd app wait ${{values.name}} --timeout 300
-          echo "ArgoCD login completed successfully."
